@@ -94,7 +94,7 @@ class RammusPlugin(private val registrar: Registrar, private val methodChannel: 
         })
         val appInfo = gottenApplication!!.packageManager
             .getApplicationInfo(gottenApplication!!.packageName, PackageManager.GET_META_DATA)
-        val xiaomiAppId = appInfo.metaData.getString("com.xiaomi.push.client.app_id")
+        val xiaomiAppId = appInfo.metaData.getFloat("com.xiaomi.push.client.app_id").toString()
         val xiaomiAppKey = appInfo.metaData.getString("com.xiaomi.push.client.app_key")
         if ((xiaomiAppId != null && xiaomiAppId.isNotBlank())
             && (xiaomiAppKey != null && xiaomiAppKey.isNotBlank())){
@@ -127,7 +127,7 @@ class RammusPlugin(private val registrar: Registrar, private val methodChannel: 
             Log.d(TAG, "正在注册Vivo推送服务...")
             VivoRegister.register(gottenApplication!!.applicationContext)
         }
-        val gcmSendId = appInfo.metaData.getString("com.gcm.push.send_id")
+        val gcmSendId = appInfo.metaData.getFloat("com.gcm.push.send_id").toString()
         val gcmApplicationId = appInfo.metaData.getString("com.gcm.push.app_id")
         val gcmProjectId = appInfo.metaData.getString("com.gcm.push.project_id")
         val gcmApiKey = appInfo.metaData.getString("com.gcm.push.api_key")
