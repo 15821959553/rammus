@@ -95,7 +95,7 @@ class RammusPlugin(private val registrar: Registrar, private val methodChannel: 
         val appInfo = gottenApplication!!.packageManager
             .getApplicationInfo(gottenApplication!!.packageName, PackageManager.GET_META_DATA)
         val xiaomiAppId = appInfo.metaData.getFloat("com.xiaomi.push.client.app_id").toString()
-        val xiaomiAppKey = appInfo.metaData.getString("com.xiaomi.push.client.app_key")
+        val xiaomiAppKey = appInfo.metaData.getFloat("com.xiaomi.push.client.app_key").toString()
         if ((xiaomiAppId != null && xiaomiAppId.isNotBlank())
             && (xiaomiAppKey != null && xiaomiAppKey.isNotBlank())){
             Log.d(TAG, "正在注册小米推送服务...")
